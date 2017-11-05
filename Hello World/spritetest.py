@@ -7,44 +7,73 @@ BLACK = (0,   0,   0)
 WHITE = (255, 255, 255)
 RED = (255,   0,   0)
 
+#Player class
 class Player(pygame.sprite.Sprite):
     def __init__(self, color, width, height):
         super().__init__()
-        self.image = pygame.image.load("Enemy.png").convert()
+    #find image
+        self.image = pygame.image.load("Player.png").convert()
+    #background?
         self.image.set_colorkey(WHITE)
-        pygame.transform.scale2x()
-        #def __init__(self):
-        #pygame.sprite.Sprite.__init__(self)
-        #self.image = pygame.Surface([30,30])
-        #self.image.fill([255,0,0])
-        #self.rect = self.image.get_rect()
+    #scale attempt
+        #pygame.transform.scale2x(self.image)
+    #define rect
+        self.rect = self.image.get_rect()
 
-    #def move_player(self):
-        #key = pygame.key.get_pressed()
-        #if key[pygame.K_DOWN]:
+# Enemy class
+class Enemy(pygame.sprite.Sprite):
+    def __init__(self, color, width, height):
+        super().__init__()
+    # find image
+        self.image = pygame.image.load("Enemy.png").convert()
+    # background?
+        self.image.set_colorkey(WHITE)
+    # scale attempt
+        # pygame.transform.scale2x(self.image)
+    # define rect
+        self.rect = self.image.get_rect()
 
-            #self.rect.y += 1
-        #elif key[pygame.K_UP]:
-            #self.rect.y -= 1
-        #elif key[pygame.K_RIGHT]:
-            #self.rect.x += 1
-        #elif key[pygame.K_LEFT]:
-            #self.rect.x -= 1
+# Ball class
+class Ball(pygame.sprite.Sprite):
+    def __init__(self, color, width, height):
+        super().__init__()
+        # find image
+        self.image = pygame.image.load("Ball.png").convert()
+        # background?
+        self.image.set_colorkey(WHITE)
+        # scale attempt
+        # pygame.transform.scale2x(self.image)
+        # define rect
+        self.rect = self.image.get_rect()
 
-    #def draw(self,surface):
-        #surface.blit(self.image,(self.rect.x, self.rect.y))
-
-
+#start pygame & set display
 pygame.init()
 screen = pygame.display.set_mode((500,500))
 pygame.display.set_caption('Sprite Test')
+#create sprites group
 sprites = pygame.sprite.Group()
 
+#add player to group
 for i in range(50):
-    test = Player(RED, 20, 15)
-    test.rect.x = 0
-    test.rect.y = 0
-    sprites.add(test)
+    p1 = Player(RED, 20, 15)
+    p1.rect.x = 10
+    p1.rect.y = 10
+    sprites.add(p1)
+
+#add enemy to group
+for i in range(50):
+    p1 = Enemy(RED, 20, 15)
+    p1.rect.x = 10
+    p1.rect.y = 110
+    sprites.add(p1)
+
+#add ball to group
+for i in range(50):
+    p1 = Ball(RED, 20, 15)
+    p1.rect.x = 10
+    p1.rect.y = 210
+    sprites.add(p1)
+
 while True: # main game loop
     screen.fill(WHITE)
     sprites.draw(screen)
