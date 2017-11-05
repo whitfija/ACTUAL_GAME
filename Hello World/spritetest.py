@@ -7,6 +7,8 @@ BLACK = (0,   0,   0)
 WHITE = (255, 255, 255)
 RED = (255,   0,   0)
 
+bg = pygame.image.load("grid.png")
+
 #Player class
 class Player(pygame.sprite.Sprite):
     def __init__(self, color, width, height):
@@ -67,7 +69,7 @@ class Ground(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
 #start pygame & set display
 pygame.init()
-screen = pygame.display.set_mode((1500,750))
+screen = pygame.display.set_mode((1024,768))
 pygame.display.set_caption('Sprite Test')
 #create sprites group
 sprites = pygame.sprite.Group()
@@ -101,6 +103,7 @@ for i in range(50):
 
 while True: # main game loop
     screen.fill(WHITE)
+    screen.blit(bg, (0,0))
     sprites.draw(screen)
     #test.move_player()
 
