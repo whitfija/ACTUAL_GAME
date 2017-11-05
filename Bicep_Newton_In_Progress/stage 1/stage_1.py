@@ -11,13 +11,15 @@ pygame.init()
 
 #colors
 BLACK = (0,   0,   0)
-RED = (255,   0,   0)
-WHITE = (255,255,255)
+BROWN = (153, 76,  0)
+GREEN = (0,   255, 0)
+BLUE  = (0,   0, 255)
+RED = (255, 0, 0)
+WHITE = (255, 255, 255)
 #declarations
 hit = False
-coeff = 1
 bg = pygame.image.load("images/grid.png")
-
+coeff = 0
 #sprite classes
 #Player class
 class Player(pygame.sprite.Sprite):
@@ -118,13 +120,14 @@ class LevelSelect:
 
         self.master = master
         master.title("A simple GUI")
-        self.label = Label(master, text="Choose")
+        self.label = Label(master, text="STEP 1")
         self.label.pack()
         self.greet_button = Button(master, text="level one", command=lambda: funcTo(1))
         self.greet_button.pack()
         self.greet_button = Button(master, text="level two", command=lambda: funcTo(2))
         self.greet_button.pack()
-
+        self.greet_button = Button(master, text="level three", command=lambda: funcTo(3))
+        self.greet_button.pack()
 
 class SelectEquation:
     func = 0
@@ -137,7 +140,7 @@ class SelectEquation:
             root2.destroy()
         self.master = master
         master.title("A simple GUI")
-        self.label = Label(master, text="Choose")
+        self.label = Label(master, text="STEP 2")
         self.label.pack()
         self.greet_button = Button(master, text="line", command= lambda: funcTo(1))
         self.greet_button.pack()
@@ -234,6 +237,104 @@ def playlv1():
                 sys.exit()
         pygame.display.update()
 
+def playlv2():
+    hit = False
+    sprites = pygame.sprite.Group()
+    for i in range(50):
+        player = Player(RED, 20, 15)
+        player.rect.x = 10
+        player.rect.y = 768 - 45 - 120 - 76
+        sprites.add(player)
+
+    for i in range(50):
+        enemy = Enemy(RED, 20, 15)
+        enemy.rect.x = 1024 - 10 - 44
+        enemy.rect.y = 768 - 45 - 120 - 200 - 100 - 100 - 25 + 2
+        sprites.add(enemy)
+
+    # add ball to group
+    for i in range(50):
+        ball = Ball(RED, 20, 15)
+        ball.rect.x = 10 + 44 - 20 + 5
+        ball.rect.y = 768 - 45 - 44 - 30 - 20 - 75
+        sprites.add(ball)
+    while True:
+        while hit == False:  # main game loop
+            screen.fill(WHITE)
+            screen.blit(bg, (0, 0))
+            pygame.draw.rect(screen, RED, (1024 - 200, 300, 200, 100))
+            pygame.draw.rect(screen, GREEN, (0, 768, 420, -120))
+            root2.mainloop()
+
+            if SelectEquation.func == 1:
+                hit = line(ball, enemy, coeff)
+            elif SelectEquation.func == 2:
+                hit = parabola(ball, enemy, coeff)
+            elif SelectEquation.func == 3:
+                hit = sine(ball, enemy, coeff)
+            else: continue
+            if hit == True:
+                showFire()
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                sys.exit()
+        pygame.display.update()
+
+
+def playlv3():
+    hit = False
+    sprites = pygame.sprite.Group()
+    # add player to group
+    for i in range(50):
+        player = Player(RED, 20, 15)
+        player.rect.x = 10
+        player.rect.y = 768 - 45 - 120 - 300 + 50 - 5
+        sprites.add(player)
+
+    # add enemy to group
+    for i in range(50):
+        enemy = Enemy(RED, 20, 15)
+        enemy.rect.x = 1024 - 10 - 44 - 20 - 20
+        enemy.rect.y = 768 - 45 - 120 - 300 + 50 - 5
+        sprites.add(enemy)
+
+    # add ball to group
+    for i in range(50):
+        ball = Ball(RED, 20, 15)
+        ball.rect.x = 10 + 44 - 20 + 5
+        ball.rect.y = 768 - 45 - 44 - 30 - 20 - 300 + 50 - 5
+        sprites.add(ball)
+    while True:
+        while hit == False:  # main game loop
+            screen.fill(WHITE)
+            screen.blit(bg, (0, 0))
+            pygame.draw.rect(screen, BLUE, (1024 - 250, 768 - 100, 200, -200))
+            pygame.draw.circle(screen, (255, 255, 0), (1024 - 800, 480), 80)
+            pygame.draw.circle(screen, (255, 0, 255), (1024 - 550, 250), 80)
+            pygame.draw.circle(screen, (0, 255, 255), (1024 - 300, 480), 80)
+            pygame.draw.rect(screen, BLUE, (0, 768 - 100, 200, -200))
+
+            sprites.draw(screen)
+            pygame.display.flip()
+
+            root2.mainloop()
+
+            if SelectEquation.func == 1:
+                hit = line(ball, enemy, coeff)
+            elif SelectEquation.func == 2:
+                hit = parabola(ball, enemy, coeff)
+            elif SelectEquation.func == 3:
+                hit = sine(ball, enemy, coeff)
+            else: continue
+            if hit == True:
+                showFire()
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                sys.exit()
+        pygame.display.update()
+
 def line(ball, enemy, coeff):
     stime = pygame.time.get_ticks()
     screen.fill(WHITE)
@@ -242,9 +343,9 @@ def line(ball, enemy, coeff):
     sprites.draw(screen)
     pygame.display.update()
 
-    m = TypeCoeffPt2(root3)
-    root3.mainloop()
-    coeff = m.entryValue()
+ #   m = TypeCoeffPt2(root3)
+ #   root3.mainloop()
+ #   coeff = m.entryValue()
 
     go = True
     while go:
@@ -305,6 +406,43 @@ def parabola(ball, enemy, coeff):
         if (ball.rect.x >= enemy.rect.x and ball.rect.x<= enemy.rect.x+44) and (ball.rect.y >= enemy.rect.y and ball.rect.y <= enemy.rect.y+120):
             go = False
             return True
+
+def sine(ball, enemy, coeff):
+    stime = pygame.time.get_ticks()
+    screen.fill(WHITE)
+    screen.blit(bg, (0, 0))
+    pygame.draw.rect(screen, (0, 0, 0), (0, 768 - 45, 1024, 45))
+    sprites.draw(screen)
+    pygame.display.update()
+
+    m = TypeCoeffPt2(root3)
+    root3.mainloop()
+    coeff = m.entryValue()
+
+    go = True
+    while go:
+        ltime = pygame.time.get_ticks()
+        print(ltime)
+        print(stime)
+        if ltime-stime < 5500:
+            ball.rect.x += 1
+            ball.rect.y += -coeff*(ball.rect.x**2)
+        else:
+            ball.rect.x = ball.rect.x
+            ball.rect.y = ball.rect.y
+            easygui.msgbox("You missed the target!", title="Wrong")
+            go = False
+            return False
+        screen.fill(WHITE)
+        screen.blit(bg, (0, 0))
+        pygame.draw.rect(screen, (0, 0, 0), (0, 768 - 45, 1024, 45))
+        sprites.draw(screen)
+        pygame.display.update()
+        pygame.display.flip()
+        if (ball.rect.x >= enemy.rect.x and ball.rect.x<= enemy.rect.x+44) and (ball.rect.y >= enemy.rect.y and ball.rect.y <= enemy.rect.y+120):
+            go = False
+            return True
+
 root = tk.Tk()
 app = LevelSelect(root)
 
@@ -328,18 +466,10 @@ while leave == False:
         if LevelSelect.func == 1:
             print(SelectEquation.func)
             playlv1()
-
-
-
-
-
-
         elif LevelSelect.func == 2:
-            if SelectEquation.func == 1:
-                play()
-            elif SelectEquation.func == 2:
-                play()
-            elif SelectEquation.func == 3:
-                play()
-
+            print(SelectEquation.func)
+            playlv2()
+        elif LevelSelect.func == 3:
+            print(SelectEquation.func)
+            playlv3()
         else: print("nada")
