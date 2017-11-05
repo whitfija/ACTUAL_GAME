@@ -19,6 +19,21 @@ class Player(pygame.sprite.Sprite):
         #self.image.fill([255,0,0])
         #self.rect = self.image.get_rect()
 
+    #def move_player(self):
+        #key = pygame.key.get_pressed()
+        #if key[pygame.K_DOWN]:
+
+            #self.rect.y += 1
+        #elif key[pygame.K_UP]:
+            #self.rect.y -= 1
+        #elif key[pygame.K_RIGHT]:
+            #self.rect.x += 1
+        #elif key[pygame.K_LEFT]:
+            #self.rect.x -= 1
+
+    #def draw(self,surface):
+        #surface.blit(self.image,(self.rect.x, self.rect.y))
+
 
 pygame.init()
 screen = pygame.display.set_mode((500,500))
@@ -26,13 +41,14 @@ pygame.display.set_caption('Sprite Test')
 sprites = pygame.sprite.Group()
 
 for i in range(50):
-    test = Player(BLACK, 20, 15)
+    test = Player(RED, 20, 15)
     test.rect.x = 0
     test.rect.y = 0
     sprites.add(test)
 while True: # main game loop
     screen.fill(WHITE)
     sprites.draw(screen)
+    #test.move_player()
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
