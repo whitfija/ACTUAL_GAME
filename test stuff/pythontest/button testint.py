@@ -82,6 +82,26 @@ class Enemy_Hit(pygame.sprite.Sprite):
 # create sprites group
 sprites = pygame.sprite.Group()
 hitsprites = pygame.sprite.Group()
+#add player to group
+for i in range(50):
+   player = Player(RED, 20, 15)
+   player.rect.x = 10
+   player.rect.y = 768-45-120
+   sprites.add(player)
+
+#add enemy to group
+for i in range(50):
+   enemy = Enemy(RED, 20, 15)
+   enemy.rect.x = 1024-10-44
+   enemy.rect.y = 768-45-120
+   sprites.add(enemy)
+
+#add ball to group
+for i in range(50):
+   ball = Ball(RED, 20, 15)
+   ball.rect.x = 10+44-20+5
+
+
 
 #Window Classes
 class LevelSelect:
