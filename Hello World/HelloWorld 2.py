@@ -7,7 +7,7 @@ screen = pygame.display.set_mode((500,500))
 
 pygame.sprite.Sprite.add
 
-def drawscreen():
+def screen():
     pygame.draw.rect(screen, (250, 250, 250), (0, 0, 500, 500))
 
 def drawplayer():
