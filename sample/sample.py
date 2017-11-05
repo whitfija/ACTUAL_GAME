@@ -1,4 +1,4 @@
-import pygame, sys
+import pygame, sys, easygui, math
 from pygame.locals import *
 import time
 from sys import exit
@@ -118,7 +118,9 @@ for i in range(50):
             sprites.draw(screen)
             pygame.display.update()
 
+
     def line(ball, enemy, coeff):
+        starttime = pygame.time.get_ticks()
         screen.fill(WHITE)
         screen.blit(bg, (0, 0))
         pygame.draw.rect(screen, (0, 0, 0), (0, 768 - 45, 1024, 45))
@@ -126,14 +128,16 @@ for i in range(50):
         pygame.display.update()
         go = True
         while go:
-            if time < 0.021184*2:
+            currenttime = pygame.time.get_ticks()
+            if currenttime-starttime < 6000:
                 ball.rect.x += 1
                 ball.rect.y += -coeff
-            elif time >= 0.021184*2:
-                ball.rect.x = 100
-                ball.rect.y = 100
             else:
-                break
+                ball.rect.x = ball.rect.x
+                ball.rect.y = ball.rect.y
+                easygui.msgbox("You missed the target!", title="Wrong")
+                go = False
+                return False
             screen.fill(WHITE)
             screen.blit(bg, (0, 0))
             pygame.draw.rect(screen, (0, 0, 0), (0, 768 - 45, 1024, 45))
@@ -147,7 +151,6 @@ for i in range(50):
 
 while True:
     while hit == False: # main game loop
-        time = time.clock()
         screen.fill(WHITE)
         screen.blit(bg, (0,0))
         pygame.draw.rect (screen, (0, 0, 0), (0, 768-45, 1024, 45))
