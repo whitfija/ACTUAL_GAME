@@ -13,7 +13,8 @@ def drawscreen():
 def drawplayer():
     pygame.display.set_caption('Hello World!')
 while True: # main game loop
-
+    drawplayer()
+    drawscreen()
 
     for event in pygame.event.get():
         if event.type == QUIT:
