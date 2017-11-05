@@ -134,6 +134,7 @@ class SelectEquation:
             print(SelectEquation.func)
             if func == 2:
                 #color = 255, 0, 0
+                first = True
                 prev_x, prev_y = 0, 0
                 while True:
                     #for event in pygame.event.get():
