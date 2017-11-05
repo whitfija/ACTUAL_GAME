@@ -60,7 +60,7 @@ class Ball(pygame.sprite.Sprite):
 
 #start pygame & set display
 pygame.init()
-screen = pygame.display.set_mode((500,500))
+screen = pygame.display.set_mode((1500,750))
 pygame.display.set_caption('Sprite Test')
 #create sprites group
 sprites = pygame.sprite.Group()
