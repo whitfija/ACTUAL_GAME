@@ -153,7 +153,7 @@ class SelectEquation:
         self.close_button.pack()
 
 class TypeCoeff(object):
-    value= enterbox(msg='blah',title='coe')
+    value= enterbox(msg='Enter your M',title='coe')
     print(value)
     coeff = value
 
@@ -324,16 +324,12 @@ def line(ball, enemy, coeff):
     sprites.draw(screen)
     pygame.display.update()
 
-<<<<<<< HEAD
     #m = TypeCoeffPt2(root3)
     #root3.mainloop()
     #coeff = m.entryValue()
-=======
  #   m = TypeCoeffPt2(root3)
  #   root3.mainloop()
  #   coeff = m.entryValue()
->>>>>>> 235a4f3b61a26fb8005cbc11edc6bfef3221c0d8
-
     go = True
     while go:
         ltime = pygame.time.get_ticks()
@@ -369,8 +365,6 @@ def parabola(ball, enemy, coeff):
     #m = TypeCoeffPt2(root3)
     #root3.mainloop()
     #coeff = m.entryValue()
-<<<<<<< HEAD
-=======
 
     go = True
     while go:
@@ -407,7 +401,6 @@ def sine(ball, enemy, coeff):
     #m = TypeCoeffPt2(root3)
     #root3.mainloop()
     #coeff = m.entryValue()
->>>>>>> 235a4f3b61a26fb8005cbc11edc6bfef3221c0d8
 
     go = True
     while go:
@@ -456,10 +449,7 @@ while leave == False:
         if LevelSelect.func == 1:
             print(SelectEquation.func)
             playlv1()
-<<<<<<< HEAD
 
-=======
->>>>>>> 235a4f3b61a26fb8005cbc11edc6bfef3221c0d8
         elif LevelSelect.func == 2:
             print(SelectEquation.func)
             playlv2()
