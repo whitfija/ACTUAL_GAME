@@ -14,6 +14,7 @@ class App:
         self.greet_button = Button(master, text="SQRT", command=master.quit)
         self.greet_button.pack()
 
+
         self.greet_button = Button(master, text="Parabola", command=master.quit)
         self.greet_button.pack()
 
@@ -127,4 +128,4 @@ while True: # main game loop
         app = App(root)
         root.mainloop()
         started = True
-    else app.
+    root.withdraw()
