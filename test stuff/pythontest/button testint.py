@@ -16,10 +16,6 @@ hit = False
 coeff = 1
 bg = pygame.image.load("images/grid.png")
 
-# start pygame & set display
-pygame.init()
-screen = pygame.display.set_mode((1024, 768))
-pygame.display.set_caption('Level 1')
 
 #sprite classes
 #Player class
@@ -79,9 +75,13 @@ class Enemy_Hit(pygame.sprite.Sprite):
         # define rect
         self.rect = self.image.get_rect()
 
+# start pygame & set display
+screen = pygame.display.set_mode((1024, 768))
+pygame.display.set_caption('Level 1')
 # create sprites group
 sprites = pygame.sprite.Group()
 hitsprites = pygame.sprite.Group()
+
 #add player to group
 for i in range(50):
    player = Player(RED, 20, 15)
@@ -98,10 +98,10 @@ for i in range(50):
 
 #add ball to group
 for i in range(50):
-   ball = Ball(RED, 20, 15)
-   ball.rect.x = 10+44-20+5
-
-
+    ball = Ball(RED, 20, 15)
+    ball.rect.x = 10+44-20+5
+    ball.rect.y = 768 - 45 - 44 - 30 - 20
+    sprites.add(ball)
 
 #Window Classes
 class LevelSelect:
@@ -110,8 +110,8 @@ class LevelSelect:
         def funcTo(num):
             LevelSelect.func = num
             print(LevelSelect.func)
-            master.quit
             root.withdraw()
+            root.destroy()
 
         self.master = master
         master.title("A simple GUI")
@@ -130,8 +130,8 @@ class SelectEquation:
         def funcTo(num):
             SelectEquation.func = num
             print(SelectEquation.func)
-            master.quit
             root2.withdraw()
+            root2.destroy()
         self.master = master
         master.title("A simple GUI")
         self.label = Label(master, text="Choose")
@@ -182,6 +182,7 @@ def showFire():
 
 #playing function
 def play():
+    hit = False
     while True:
         while hit == False:  # main game loop
             screen.fill(WHITE)
@@ -241,39 +242,25 @@ leave = False
 while leave == False:
     if started1 == False:
         started1 = True
+        LevelSelect.func = 1
         root.mainloop()
-        root.withdraw()
         if LevelSelect.func == 1:
+            print(SelectEquation.func)
             root2.mainloop()
             if SelectEquation.func == 1:
-                screen.fill(WHITE)
-                screen.blit(bg, (0, 0))
-                pygame.draw.rect(screen, (0, 0, 0), (0, 768 - 45, 1024, 45))
-                hit = line(ball, enemy, coeff)
-                if hit:
-                    showFire()
+                play()
             elif SelectEquation.func == 2:
-                screen.fill(WHITE)
-                screen.blit(bg, (0, 0))
-                pygame.draw.rect(screen, (0, 0, 0), (0, 768 - 45, 1024, 45))
+                play()
             elif SelectEquation.func == 3:
-                screen.fill(WHITE)
-                screen.blit(bg, (0, 0))
-                pygame.draw.rect(screen, (0, 0, 0), (0, 768 - 45, 1024, 45))
+                play()
 
         elif LevelSelect.func == 2:
             root2.mainloop()
             if SelectEquation.func == 1:
-                screen.fill(WHITE)
-                screen.blit(bg, (0, 0))
-                pygame.draw.rect(screen, (0, 0, 0), (0, 768 - 45, 1024, 45))
+                play()
             elif SelectEquation.func == 2:
-                screen.fill(WHITE)
-                screen.blit(bg, (0, 0))
-                pygame.draw.rect(screen, (0, 0, 0), (0, 768 - 45, 1024, 45))
+                play()
             elif SelectEquation.func == 3:
-                screen.fill(WHITE)
-                screen.blit(bg, (0, 0))
-                pygame.draw.rect(screen, (0, 0, 0), (0, 768 - 45, 1024, 45))
+                play()
 
         else: print("nada")

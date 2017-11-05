@@ -3,7 +3,19 @@ import random
 import math
 import sys
 from pygame.locals import *
-from Ball import Ball
+
+class Ball(pygame.sprite.Sprite):
+    #Starting position and speed
+    speed = 6
+
+    def __init__(self):
+        super().__init__()
+        self.image = pygame.Surface([250, 250])
+        self.image = pygame.image.load("Ball.png").convert_alpha()
+        self.rect = self.image.get_rect(center=(10, 350))
+        self.rect.bottom = 770
+        self.rect.x = 269.5
+        self.rect.y = 369.5
  
 pygame.init()
  
@@ -262,6 +274,7 @@ while True:
         ball_can_move = False
         ball.rect.y = 700
 
+        generating = True
         generating = True
         x_pos = 0
         y_pos = -590

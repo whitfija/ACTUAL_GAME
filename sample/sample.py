@@ -3,9 +3,24 @@ from pygame.locals import *
 import time
 from sys import exit
 from tkinter import Tk, Label, Button
+<<<<<<< HEAD
 import matplotlib.pyplot as plt
+=======
+import random
+from pygame.locals import *
 
 pygame.init()
+
+screen = pygame.display.set_mode((540, 780))
+screen.fill((255, 255, 255))
+font = pygame.font.SysFont(None, 36)
+>>>>>>> 24b9c5fa5782d5a026d68129f64b057c70479d5e
+
+pygame.init()
+
+def draw_text(display_string, font, surface, x_pos, y_pos):
+    text_display = font.render(display_string, 1, (0, 0, 0))
+    surface.blit(text_display, (x_pos, y_pos))
 
 
 #colors
@@ -16,8 +31,12 @@ hit = False
 coeff = 1
 bg = pygame.image.load("images/grid.png")
 
+
 #gamestate
 gamestate = 0
+
+grounded = True
+
 #Player class
 class Player(pygame.sprite.Sprite):
     def __init__(self, color, width, height):
@@ -239,9 +258,65 @@ started3 = False
 leave = False
 #Main
 
-while leave == False:
+while True:
     if gamestate == 0:
-        gamestate = 0
+        draw_text('Press Space to Play', font, screen, 125, 55)
+    if gamestate == 1:
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == KEYDOWN:
+                if event.key == K_SPACE:
+                    if game_state == 0 or game_state == 3:
+                        game_state = 1
+                    if game_state == 1:
+                        if jump_state == 0 and grounded:
+                            jump_state = 1
+        while hit == False: # main game loop
+            pygame.font.init()
+            font = pygame.font.SysFont("", 20)
+            text = font.render("Welcome to the ball demo", True, (0, 0, 0))
+            screen.fill(WHITE)
+            screen.blit(bg, (0,0))
+            pygame.draw.rect (screen, (0, 0, 0), (0, 768-45, 1024, 45))
+
+            #if started1 == False:
+                #root = Tk()
+                #app = App1(root)
+                #root.mainloop()
+                #started1 = True
+            #root.withdraw()
+
+            #if started2 == False:
+                #root = Tk()
+                #app = App2(root)
+                #root.mainloop()
+                #started2 = True
+            #root.withdraw()
+
+            #if App1.func == 1:
+            hit = line(ball, enemy, coeff)
+            #elif App1.func == 2:
+            #    hit = line(ball, enemy, coeff)
+            #else: continue
+
+            if hit:
+                showFire()
+                root = Tk()
+                app = App3(root)
+                root.mainloop()
+                started3 = True
+                root.withdraw()
+
+        if App3.func == 1:
+            leave = False
+        elif App3.func == 2:
+            leave = True
+        else: continue
+
+    pygame.display.update
+    gamestate = 0
     while hit == False: # main game loop
         screen.fill(WHITE)
         screen.blit(bg, (0,0))
@@ -279,12 +354,11 @@ while leave == False:
         leave = False
     elif App3.func == 2:
         leave = True
-    else: continue
+    else:
+        continue
 
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
         pygame.display.update()
-
-
