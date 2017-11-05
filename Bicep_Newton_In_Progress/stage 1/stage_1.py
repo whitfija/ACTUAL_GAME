@@ -1,6 +1,27 @@
 import pygame, sys
 from pygame.locals import *
 from sys import exit
+from tkinter import Tk, Label, Button
+
+class App:
+    def __init__(self, master):
+        self.master = master
+        master.title("A simple GUI")
+
+        self.label = Label(master, text="Choose")
+        self.label.pack()
+
+        self.greet_button = Button(master, text="SQRT", command=master.quit)
+        self.greet_button.pack()
+
+        self.greet_button = Button(master, text="Parabola", command=master.quit)
+        self.greet_button.pack()
+
+        self.greet_button = Button(master, text="Exponential", command=master.quit)
+        self.greet_button.pack()
+
+        self.close_button = Button(master, text="OK", command=master.quit)
+        self.close_button.pack()
 
 #colors
 BLACK = (0,   0,   0)
@@ -85,15 +106,25 @@ for i in range(50):
     p1.rect.y = 768-45-44-30-20
     sprites.add(p1)
 
+started = False
+
 while True: # main game loop
+
     screen.fill(WHITE)
     screen.blit(bg, (0,0))
     pygame.draw.rect (screen, (0, 0, 0), (0, 768-45, 1024, 45))
     sprites.draw(screen)
-    #test.move_player()
 
+
+    #test.move_player()
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
     pygame.display.update()
+    if started == False:
+        root = Tk()
+        app = App(root)
+        root.mainloop()
+        started = True
+    else app.
