@@ -15,8 +15,7 @@ def draw_text(display_string, font, surface, x_pos, y_pos):
     surface.blit(text_display, (x_pos, y_pos))
 
 #Variables
-grounded = False
-
+gamestate = 0
 
 main_clock = pygame.time.Clock()
 
@@ -33,6 +32,10 @@ while True:
             if event.key == K_RETURN:
                 if game_state == 3:
                     game_state = 1
+    if gamestate == 0:
+        draw_text('Press Space to Play', font, screen, 135, 354)
+    elif gamestate == 1:
+        print ("GS 1!!!!!")
  
     main_clock.tick(50)
     screen.fill((255, 255, 255))

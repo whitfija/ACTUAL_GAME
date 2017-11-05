@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import pygame, sys, math, easygui
 from pygame.locals import *
 import time
@@ -264,3 +265,5 @@ while leave == False:
                 play()
 
         else: print("nada")
+=======
+>>>>>>> 95413235482eee7dc8c923577a9f3cab77e3b867
