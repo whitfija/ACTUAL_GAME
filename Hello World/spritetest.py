@@ -15,12 +15,10 @@ class Player(pygame.sprite.Sprite):
         self.image = pygame.image.load("Player.png").convert()
     #background?
         self.image.set_colorkey(WHITE)
-<<<<<<< HEAD
     #scale attempt
         #pygame.transform.scale2x(self.image)
     #define rect
         self.rect = self.image.get_rect()
-=======
         def drawplayer(self,surface):
             self = pygame.transform.scale2x(self.image)
             surface.blit(self.image, (self.rect.x, self.rect.y))
@@ -33,7 +31,6 @@ class Player(pygame.sprite.Sprite):
     #def move_player(self):
         #key = pygame.key.get_pressed()
         #if key[pygame.K_DOWN]:
->>>>>>> eb97dc8e287ece723d6982e8d57116ca74858b5f
 
 # Enemy class
 class Enemy(pygame.sprite.Sprite):
@@ -67,7 +64,6 @@ screen = pygame.display.set_mode((500,500))
 pygame.display.set_caption('Sprite Test')
 #create sprites group
 sprites = pygame.sprite.Group()
-<<<<<<< HEAD
 
 #add player to group
 for i in range(50):
@@ -80,27 +76,19 @@ for i in range(50):
 for i in range(50):
     p1 = Enemy(RED, 20, 15)
     p1.rect.x = 10
-    p1.rect.y = 110
+    p1.rect.y = 210
     sprites.add(p1)
 
 #add ball to group
 for i in range(50):
     p1 = Ball(RED, 20, 15)
     p1.rect.x = 10
-    p1.rect.y = 210
+    p1.rect.y = 410
     sprites.add(p1)
 
-=======
-#for i in range(50):
-    #test = Player(RED, 20, 15)
-   # test.rect.x = 0
-  #  test.rect.y = 0
- #   sprites.add(test)
->>>>>>> eb97dc8e287ece723d6982e8d57116ca74858b5f
 while True: # main game loop
     screen.fill(WHITE)
     sprites.draw(screen)
-    Player.drawplayer(screen)
     #test.move_player()
 
     for event in pygame.event.get():
