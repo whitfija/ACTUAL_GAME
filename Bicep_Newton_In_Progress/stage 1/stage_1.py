@@ -181,22 +181,28 @@ def showFire():
         pygame.display.update()
 
 #playing function
-def play():
+def playlv1():
     hit = False
     while True:
         while hit == False:  # main game loop
             screen.fill(WHITE)
             screen.blit(bg, (0, 0))
             pygame.draw.rect(screen, (0, 0, 0), (0, 768 - 45, 1024, 45))
-            hit = line(ball, enemy, coeff)
-            if hit:
+            root2.mainloop()
+            if SelectEquation.func == 1:
+                hit = line(ball, enemy, coeff)
+            elif SelectEquation.func == 2:
+                hit = parabola(ball, enemy, coeff)
+            elif SelectEquation.func == 3:
+                hit = sine(ball, enemy, coeff)
+            else: continue
+            if hit == True:
                 showFire()
-
-            for event in pygame.event.get():
-                if event.type == QUIT:
-                    pygame.quit()
-                    sys.exit()
-            pygame.display.update()
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                sys.exit()
+        pygame.display.update()
 
 def line(ball, enemy, coeff):
     starttime = pygame.time.get_ticks()
@@ -237,6 +243,7 @@ started1 = False
 started2 = False
 started3 = False
 leave = False
+
 #Main Loop
 
 while leave == False:
@@ -246,16 +253,14 @@ while leave == False:
         root.mainloop()
         if LevelSelect.func == 1:
             print(SelectEquation.func)
-            root2.mainloop()
-            if SelectEquation.func == 1:
-                play()
-            elif SelectEquation.func == 2:
-                play()
-            elif SelectEquation.func == 3:
-                play()
+            playlv1()
+
+
+
+
+
 
         elif LevelSelect.func == 2:
-            root2.mainloop()
             if SelectEquation.func == 1:
                 play()
             elif SelectEquation.func == 2:
