@@ -1,4 +1,4 @@
-import pygame, sys, math, easygui, os, time
+import pygame, sys, math, easygui, os
 from pygame.locals import *
 import time
 from sys import exit
@@ -6,16 +6,16 @@ import tkinter as tk
 import tkinter as tk2
 from tkinter import *
 
+pygame.init()
+
 #colors
 BLACK = (0,   0,   0)
-WHITE = (255, 255, 255)
 RED = (255,   0,   0)
-
+WHITE = (255,255,255)
 #declarations
 hit = False
 coeff = 1
 bg = pygame.image.load("images/grid.png")
-
 
 #sprite classes
 #Player class
@@ -207,7 +207,7 @@ def playlv1():
         pygame.display.update()
 
 def line(ball, enemy, coeff):
-    starttime = pygame.time.get_ticks()
+    stime = pygame.time.get_ticks()
     screen.fill(WHITE)
     screen.blit(bg, (0, 0))
     pygame.draw.rect(screen, (0, 0, 0), (0, 768 - 45, 1024, 45))
@@ -215,10 +215,11 @@ def line(ball, enemy, coeff):
     pygame.display.update()
     go = True
     while go:
-        currenttime = pygame.time.Clock()
-        main_clock.tick(100)
-        if currenttime-starttime < 2000:
-            ball.rect.x += 2
+        ltime = pygame.time.get_ticks()
+        print(ltime)
+        print(stime)
+        if ltime-stime < 5500:
+            ball.rect.x += 1
             ball.rect.y += -coeff
         else:
             ball.rect.x = ball.rect.x
