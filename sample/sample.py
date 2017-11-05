@@ -3,9 +3,6 @@ from pygame.locals import *
 import time
 from sys import exit
 from tkinter import Tk, Label, Button
-<<<<<<< HEAD
-import matplotlib.pyplot as plt
-=======
 import random
 from pygame.locals import *
 
@@ -14,7 +11,6 @@ pygame.init()
 screen = pygame.display.set_mode((540, 780))
 screen.fill((255, 255, 255))
 font = pygame.font.SysFont(None, 36)
->>>>>>> 24b9c5fa5782d5a026d68129f64b057c70479d5e
 
 pygame.init()
 
