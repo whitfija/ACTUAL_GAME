@@ -4,6 +4,7 @@ import time
 from sys import exit
 import tkinter as tk
 import tkinter as tk2
+import tkinter as tk3
 from tkinter import *
 
 pygame.init()
@@ -147,6 +148,31 @@ class SelectEquation:
         self.close_button = Button(master, text="OK", command=master.quit)
         self.close_button.pack()
 
+class TypeCoeff(object):
+    def __init__(self, master):
+        top = self.top = Toplevel(popup)
+        self.l = Label(top, text="Hello World")
+        self.l.pack()
+        self.e = Entry(top)
+        self.e.pack()
+        self.b = Button(top, text='Ok', command=self.cleanup)
+        self.b.pack()
+    def cleanup(self):
+        self.value = self.e.get()
+        self.top.destroy()
+
+class TypeCoeffPt2(object):
+
+    def popup(self, popup):
+        self.popup = popup
+        self.w=TypeCoeff(self.popup)
+        self.b["state"] = "disabled"
+        self.popup.wait_window(self.w.top)
+        self.b["state"] = "normal"
+
+    def entryValue(self):
+        return self.w.value
+
 class LoseWindow:
     func = 0
 
@@ -165,6 +191,7 @@ class LoseWindow:
         self.greet_button.pack()
         self.greet_button = Button(master, text="Quit", command=lambda: funcTo(2))
         self.greet_button.pack()
+
 
 def showFire():
     for i in range(50):
@@ -191,6 +218,7 @@ def playlv1():
             screen.blit(bg, (0, 0))
             pygame.draw.rect(screen, (0, 0, 0), (0, 768 - 45, 1024, 45))
             root2.mainloop()
+
             if SelectEquation.func == 1:
                 hit = line(ball, enemy, coeff)
             elif SelectEquation.func == 2:
@@ -213,6 +241,11 @@ def line(ball, enemy, coeff):
     pygame.draw.rect(screen, (0, 0, 0), (0, 768 - 45, 1024, 45))
     sprites.draw(screen)
     pygame.display.update()
+
+    m = TypeCoeffPt2(root3)
+    root3.mainloop()
+    coeff = m.entryValue()
+
     go = True
     while go:
         ltime = pygame.time.get_ticks()
@@ -220,7 +253,7 @@ def line(ball, enemy, coeff):
         print(stime)
         if ltime-stime < 5500:
             ball.rect.x += 1
-            ball.rect.y += -coeff
+            ball.rect.y += (int)((0-coeff)*ball.rect.x)
         else:
             ball.rect.x = ball.rect.x
             ball.rect.y = ball.rect.y
@@ -237,13 +270,48 @@ def line(ball, enemy, coeff):
             go = False
             return True
 
+def parabola(ball, enemy, coeff):
+    stime = pygame.time.get_ticks()
+    screen.fill(WHITE)
+    screen.blit(bg, (0, 0))
+    pygame.draw.rect(screen, (0, 0, 0), (0, 768 - 45, 1024, 45))
+    sprites.draw(screen)
+    pygame.display.update()
+
+    m = TypeCoeffPt2(root3)
+    root3.mainloop()
+    coeff = m.entryValue()
+
+    go = True
+    while go:
+        ltime = pygame.time.get_ticks()
+        print(ltime)
+        print(stime)
+        if ltime-stime < 5500:
+            ball.rect.x += 1
+            ball.rect.y += -coeff*(ball.rect.x**2)
+        else:
+            ball.rect.x = ball.rect.x
+            ball.rect.y = ball.rect.y
+            easygui.msgbox("You missed the target!", title="Wrong")
+            go = False
+            return False
+        screen.fill(WHITE)
+        screen.blit(bg, (0, 0))
+        pygame.draw.rect(screen, (0, 0, 0), (0, 768 - 45, 1024, 45))
+        sprites.draw(screen)
+        pygame.display.update()
+        pygame.display.flip()
+        if (ball.rect.x >= enemy.rect.x and ball.rect.x<= enemy.rect.x+44) and (ball.rect.y >= enemy.rect.y and ball.rect.y <= enemy.rect.y+120):
+            go = False
+            return True
 root = tk.Tk()
 app = LevelSelect(root)
 
 root2 = tk2.Tk()
 app2 = SelectEquation(root2)
 
-
+root3 = tk3.Tk()
 
 started1 = False
 started2 = False

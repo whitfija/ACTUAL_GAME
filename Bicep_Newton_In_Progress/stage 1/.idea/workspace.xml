@@ -14,31 +14,11 @@
       <file leaf-file-name="stage_1.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/stage_1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
-              <caret line="224" column="37" lean-forward="true" selection-start-line="224" selection-start-column="37" selection-end-line="224" selection-end-column="37" />
+            <state relative-caret-position="440">
+              <caret line="169" column="18" lean-forward="false" selection-start-line="169" selection-start-column="18" selection-end-line="169" selection-end-column="18" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Timer.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../Examples/Timer.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
-              <caret line="25" column="25" lean-forward="true" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Jump edited.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../Examples/Jump edited.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3472">
-              <caret line="46" column="23" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -55,11 +35,14 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>pygame</find>
-      <find>main</find>
       <find>clock</find>
       <find>tick</find>
       <find>init</find>
+      <find>main</find>
       <find>line</find>
+      <find>parabola</find>
+      <find>type</find>
+      <find>root3</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -67,12 +50,13 @@
       <list>
         <option value="$PROJECT_DIR$/HelloWorld 1.py" />
         <option value="$PROJECT_DIR$/../../Examples/Jump edited.py" />
+        <option value="$PROJECT_DIR$/../../test stuff/pythontest/button testint.py" />
         <option value="$PROJECT_DIR$/stage_1.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
+    <option name="x" value="960" />
     <option name="width" value="960" />
     <option name="height" value="1030" />
   </component>
@@ -187,7 +171,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="960" height="1030" extended-state="0" />
+    <frame x="960" y="0" width="960" height="1030" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -231,10 +215,26 @@
     <entry file="file://$PROJECT_DIR$/HelloWorld 1.py" />
     <entry file="file://$PROJECT_DIR$/HelloWorld 1.py" />
     <entry file="file://$PROJECT_DIR$/HelloWorld 2.py" />
+    <entry file="file://$PROJECT_DIR$/../../test stuff/Hello World/spritetest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../../Examples/Jump edited.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3472">
-          <caret line="46" column="23" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+        <state relative-caret-position="-483">
+          <caret line="221" column="0" lean-forward="true" selection-start-line="221" selection-start-column="0" selection-end-line="221" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../test stuff/pythontest/button testint.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="195" column="29" lean-forward="false" selection-start-line="195" selection-start-column="25" selection-end-line="195" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -249,8 +249,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/stage_1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="224" column="37" lean-forward="true" selection-start-line="224" selection-start-column="37" selection-end-line="224" selection-end-column="37" />
+        <state relative-caret-position="440">
+          <caret line="169" column="18" lean-forward="false" selection-start-line="169" selection-start-column="18" selection-end-line="169" selection-end-column="18" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>
