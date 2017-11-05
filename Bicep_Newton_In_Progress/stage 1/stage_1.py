@@ -6,8 +6,6 @@ import tkinter as tk
 import tkinter as tk2
 import tkinter as tk3
 from tkinter import *
-import matplotlib.pyplot as plt
-
 
 pygame.init()
 
@@ -138,33 +136,6 @@ class SelectEquation:
         def funcTo(num):
             SelectEquation.func = num
             print(SelectEquation.func)
-            if func == 2:
-                #color = 255, 0, 0
-                first = True
-                prev_x, prev_y = 0, 0
-                while True:
-                    #for event in pygame.event.get():
-                       # if event.type == QUIT:
-                      #      pygame.quit()
-                     #       sys.exit()
-
-                 #   screen.fill((0, 0, 0))
-
-                    for y, py in enumerate(pxarray):
-                        for x, px in enumerate(py):
-                            if int(x) == (int(y) * int(y)) - 30 * int(y) + 450:
-                                pxarray[y][x] = 0xFFFFFF
-
-                                if first:
-                                    first = False
-                                    prev_x, prev_y = x, y
-                                    continue
-
-                                pygame.draw.line(screen, color, (prev_y, prev_x), (y, x))
-                                prev_x, prev_y = x, y
-
-                    first = True
-                    pygame.display.flip()
             root2.withdraw()
             root2.destroy()
         self.master = master
@@ -408,9 +379,9 @@ def parabola(ball, enemy, coeff):
     sprites.draw(screen)
     pygame.display.update()
 
-    m = TypeCoeffPt2(root3)
-    root3.mainloop()
-    coeff = m.entryValue()
+    #m = TypeCoeffPt2(root3)
+    #root3.mainloop()
+    #coeff = m.entryValue()
 
     go = True
     while go:
@@ -444,9 +415,9 @@ def sine(ball, enemy, coeff):
     sprites.draw(screen)
     pygame.display.update()
 
-    m = TypeCoeffPt2(root3)
-    root3.mainloop()
-    coeff = m.entryValue()
+    #m = TypeCoeffPt2(root3)
+    #root3.mainloop()
+    #coeff = m.entryValue()
 
     go = True
     while go:
@@ -478,7 +449,7 @@ app = LevelSelect(root)
 root2 = tk2.Tk()
 app2 = SelectEquation(root2)
 
-root3 = tk3.Tk()
+#root3 = tk3.Tk()
 
 started1 = False
 started2 = False
