@@ -1,4 +1,4 @@
-import pygame, sys, math, easygui
+import pygame, sys, math, easygui, os
 from pygame.locals import *
 import time
 from sys import exit
@@ -6,16 +6,16 @@ import tkinter as tk
 import tkinter as tk2
 from tkinter import *
 
+pygame.init()
+
 #colors
 BLACK = (0,   0,   0)
-WHITE = (255, 255, 255)
 RED = (255,   0,   0)
-
+WHITE = (255,255,255)
 #declarations
 hit = False
 coeff = 1
 bg = pygame.image.load("images/grid.png")
-
 
 #sprite classes
 #Player class
@@ -76,8 +76,10 @@ class Enemy_Hit(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
 
 # start pygame & set display
-screen = pygame.display.set_mode((1024, 768))
+screen = pygame.display.set_mode((1024, 768),0,0)
 pygame.display.set_caption('Level 1')
+os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (0, 0)
+time.sleep(2)
 # create sprites group
 sprites = pygame.sprite.Group()
 hitsprites = pygame.sprite.Group()
@@ -205,7 +207,7 @@ def playlv1():
         pygame.display.update()
 
 def line(ball, enemy, coeff):
-    starttime = pygame.time.get_ticks()
+    stime = pygame.time.get_ticks()
     screen.fill(WHITE)
     screen.blit(bg, (0, 0))
     pygame.draw.rect(screen, (0, 0, 0), (0, 768 - 45, 1024, 45))
@@ -213,8 +215,10 @@ def line(ball, enemy, coeff):
     pygame.display.update()
     go = True
     while go:
-        currenttime = pygame.time.get_ticks()
-        if currenttime-starttime < 6000:
+        ltime = pygame.time.get_ticks()
+        print(ltime)
+        print(stime)
+        if ltime-stime < 5500:
             ball.rect.x += 1
             ball.rect.y += -coeff
         else:
@@ -238,6 +242,8 @@ app = LevelSelect(root)
 
 root2 = tk2.Tk()
 app2 = SelectEquation(root2)
+
+
 
 started1 = False
 started2 = False
