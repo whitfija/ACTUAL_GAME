@@ -22,6 +22,7 @@ class Player(pygame.sprite.Sprite):
         def drawplayer(self,surface):
             self = pygame.transform.scale2x(self.image)
             surface.blit(self.image, (self.rect.x, self.rect.y))
+
         #def __init__(self):
         #pygame.sprite.Sprite.__init__(self)
         #self.image = pygame.Surface([30,30])
@@ -58,6 +59,12 @@ class Ball(pygame.sprite.Sprite):
         # define rect
         self.rect = self.image.get_rect()
 
+class Ground(pygame.sprite.Sprite):
+    def __init__(self, color, width, height):
+        super().__init__()
+        self.image = pygame.image.load("Ground.png").convert()
+        self.image.set_colorkey(WHITE)
+        self.rect = self.image.get_rect()
 #start pygame & set display
 pygame.init()
 screen = pygame.display.set_mode((1500,750))
@@ -66,6 +73,12 @@ pygame.display.set_caption('Sprite Test')
 sprites = pygame.sprite.Group()
 
 #add player to group
+for i in range(50):
+    ground = Ground(RED, 20, 15)
+    ground.rect.x = 0
+    ground.rect.y = 677
+    sprites.add(ground)
+
 for i in range(50):
     p1 = Player(RED, 20, 15)
     p1.rect.x = 10
