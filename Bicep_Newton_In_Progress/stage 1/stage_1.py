@@ -12,6 +12,9 @@ def funcTo3():
     func = 3
 class App:
 
+if func == 1
+    x ** 1/2
+
 
     def __init__(self, master):
         self.master = master
