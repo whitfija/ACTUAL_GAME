@@ -12,9 +12,6 @@ class Player(pygame.sprite.Sprite):
         super().__init__()
         self.image = pygame.image.load("Enemy.png").convert()
         self.image.set_colorkey(WHITE)
-        def drawplayer(self,surface):
-            self = pygame.transform.scale2x(self.image)
-            surface.blit(self.image, (self.rect.x, self.rect.y))
         #def __init__(self):
         #pygame.sprite.Sprite.__init__(self)
         #self.image = pygame.Surface([30,30])
@@ -49,7 +46,6 @@ sprites = pygame.sprite.Group()
 while True: # main game loop
     screen.fill(WHITE)
     sprites.draw(screen)
-    Player.drawplayer(screen)
     #test.move_player()
 
     for event in pygame.event.get():
