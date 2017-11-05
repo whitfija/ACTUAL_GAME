@@ -1,4 +1,5 @@
 import pygame, sys, math, easygui, os
+from easygui import enterbox
 from pygame.locals import *
 import time
 from sys import exit
@@ -120,9 +121,9 @@ class LevelSelect:
         master.title("A simple GUI")
         self.label = Label(master, text="Choose")
         self.label.pack()
-        self.greet_button = Button(master, text="level one", command=lambda: funcTo(1))
+        self.greet_button = Button(master, text="Level one", command=lambda: funcTo(1))
         self.greet_button.pack()
-        self.greet_button = Button(master, text="level two", command=lambda: funcTo(2))
+        self.greet_button = Button(master, text="Level two", command=lambda: funcTo(2))
         self.greet_button.pack()
 
 
@@ -149,29 +150,9 @@ class SelectEquation:
         self.close_button.pack()
 
 class TypeCoeff(object):
-    def __init__(self, master):
-        top = self.top = Toplevel(popup)
-        self.l = Label(top, text="Hello World")
-        self.l.pack()
-        self.e = Entry(top)
-        self.e.pack()
-        self.b = Button(top, text='Ok', command=self.cleanup)
-        self.b.pack()
-    def cleanup(self):
-        self.value = self.e.get()
-        self.top.destroy()
-
-class TypeCoeffPt2(object):
-
-    def popup(self, popup):
-        self.popup = popup
-        self.w=TypeCoeff(self.popup)
-        self.b["state"] = "disabled"
-        self.popup.wait_window(self.w.top)
-        self.b["state"] = "normal"
-
-    def entryValue(self):
-        return self.w.value
+    value= enterbox(msg='blah',title='coe')
+    print(value)
+    coeff = value
 
 class LoseWindow:
     func = 0
@@ -242,9 +223,9 @@ def line(ball, enemy, coeff):
     sprites.draw(screen)
     pygame.display.update()
 
-    m = TypeCoeffPt2(root3)
-    root3.mainloop()
-    coeff = m.entryValue()
+    #m = TypeCoeffPt2(root3)
+    #root3.mainloop()
+    #coeff = m.entryValue()
 
     go = True
     while go:
@@ -278,9 +259,9 @@ def parabola(ball, enemy, coeff):
     sprites.draw(screen)
     pygame.display.update()
 
-    m = TypeCoeffPt2(root3)
-    root3.mainloop()
-    coeff = m.entryValue()
+    #m = TypeCoeffPt2(root3)
+    #root3.mainloop()
+    #coeff = m.entryValue()
 
     go = True
     while go:
@@ -311,7 +292,7 @@ app = LevelSelect(root)
 root2 = tk2.Tk()
 app2 = SelectEquation(root2)
 
-root3 = tk3.Tk()
+#root3 = tk3.Tk()
 
 started1 = False
 started2 = False
@@ -328,11 +309,6 @@ while leave == False:
         if LevelSelect.func == 1:
             print(SelectEquation.func)
             playlv1()
-
-
-
-
-
 
         elif LevelSelect.func == 2:
             if SelectEquation.func == 1:
