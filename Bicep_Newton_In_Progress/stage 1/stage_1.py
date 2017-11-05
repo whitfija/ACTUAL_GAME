@@ -11,18 +11,19 @@ def funcTo2():
 def funcTo3():
     func = 3
 class App:
+<<<<<<< HEAD
+=======
 
 #if func == 1:
     #x ** 1/2
 
 
+>>>>>>> 1a0be297e93d760b07b87c9b6444cdfd0949f9f2
     def __init__(self, master):
         self.master = master
         master.title("A simple GUI")
-
         self.label = Label(master, text="Choose")
         self.label.pack()
-
         self.greet_button = Button(master, text="SQRT", command=funcTo1)
         self.greet_button.pack()
         self.greet_button = Button(master, text="Parabola", command=funcTo2)
