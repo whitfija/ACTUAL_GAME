@@ -15,8 +15,6 @@ class Player(pygame.sprite.Sprite):
         self.image = pygame.image.load("Player.png").convert()
     #background?
         self.image.set_colorkey(WHITE)
-<<<<<<< HEAD
-=======
     #scale attempt
         #pygame.transform.scale2x(self.image)
     #define rect
@@ -24,7 +22,6 @@ class Player(pygame.sprite.Sprite):
         def drawplayer(self,surface):
             self = pygame.transform.scale2x(self.image)
             surface.blit(self.image, (self.rect.x, self.rect.y))
->>>>>>> 5d5cae072ccd47948e5ce13f3207f3f984411288
         #def __init__(self):
         #pygame.sprite.Sprite.__init__(self)
         #self.image = pygame.Surface([30,30])
