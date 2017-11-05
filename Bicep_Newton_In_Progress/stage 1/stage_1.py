@@ -11,29 +11,17 @@ def funcTo2():
 def funcTo3():
     func = 3
 class App:
-
-
     def __init__(self, master):
         self.master = master
         master.title("A simple GUI")
-
         self.label = Label(master, text="Choose")
         self.label.pack()
-
         self.greet_button = Button(master, text="SQRT", command=funcTo1)
         self.greet_button.pack()
-
-<<<<<<< HEAD
-
-        self.greet_button = Button(master, text="Parabola", command=master.quit)
-=======
         self.greet_button = Button(master, text="Parabola", command=funcTo2)
->>>>>>> 9bf103f0ebfa02ce58ec0a80b867df3abd237175
         self.greet_button.pack()
-
         self.greet_button = Button(master, text="Exponential", command=funcTo3)
         self.greet_button.pack()
-
         self.close_button = Button(master, text="OK", command=master.quit)
         self.close_button.pack()
 
@@ -141,8 +129,4 @@ while True: # main game loop
         app = App(root)
         root.mainloop()
         started = True
-<<<<<<< HEAD
     root.withdraw()
-=======
-    root.withdraw()
->>>>>>> 9bf103f0ebfa02ce58ec0a80b867df3abd237175
