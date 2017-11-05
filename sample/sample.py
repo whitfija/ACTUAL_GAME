@@ -295,3 +295,49 @@ while True:
         else: continue
 
     pygame.display.update
+    gamestate = 0
+    while hit == False: # main game loop
+        screen.fill(WHITE)
+        screen.blit(bg, (0,0))
+        pygame.draw.rect (screen, (0, 0, 0), (0, 768-45, 1024, 45))
+
+        if started1 == False:
+            root = Tk()
+            app = App1(root)
+            root.mainloop()
+            started1 = True
+        root.withdraw()
+
+        if started2 == False:
+            root = Tk()
+            app = App2(root)
+            root.mainloop()
+            started2 = True
+        root.withdraw()
+
+        if App1.func == 1:
+            hit = line(ball, enemy, coeff)
+        elif App1.func == 2:
+            hit = line(ball, enemy, coeff)
+        else: continue
+
+        if hit:
+            showFire()
+            root = Tk()
+            app = App3(root)
+            root.mainloop()
+            started3 = True
+            root.withdraw()
+
+    if App3.func == 1:
+        leave = False
+    elif App3.func == 2:
+        leave = True
+    else:
+        continue
+
+    for event in pygame.event.get():
+        if event.type == QUIT:
+            pygame.quit()
+            sys.exit()
+        pygame.display.update()
