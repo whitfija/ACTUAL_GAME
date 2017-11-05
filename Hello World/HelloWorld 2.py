@@ -13,7 +13,7 @@ def drawscreen():
 def drawplayer():
 
 
-#pygame.display.set_caption('Hello World!')
+pygame.display.set_caption('Hello World!')
 while True: # main game loop
 
 
