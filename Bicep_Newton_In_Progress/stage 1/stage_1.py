@@ -13,6 +13,7 @@ class App:
         def funcTo(num):
             App.func = num
             print(App.func)
+            master.quit
             root.withdraw()
         self.master = master
         master.title("A simple GUI")
