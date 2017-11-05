@@ -3,7 +3,10 @@ from pygame.locals import *
 import time
 from sys import exit
 from tkinter import Tk, Label, Button
+<<<<<<< HEAD
 import matplotlib.pyplot as plt
+=======
+>>>>>>> 06657d30da91edfdd18ab0f14a18e2aa5323a818
 import random
 from pygame.locals import *
 
