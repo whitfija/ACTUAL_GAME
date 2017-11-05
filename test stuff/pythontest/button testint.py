@@ -1,20 +1,21 @@
-import pygame, sys
-from tkinter import *
+import pygame
+from tkinter import Tk, Label, Button
 class App:
-  def __init__(self, master):
-    frame = Frame(master)
-    frame.pack()
-    self.button = Button(frame,
-                         text="QUIT", fg="red",
-                         command=quit)
-    self.button.pack(side=LEFT)
-    self.slogan = Button(frame,
-                         text="Hello",
-                         command=self.write_slogan)
-    self.slogan.pack(side=LEFT)
-  def write_slogan(self):
-    print("Tkinter is easy to use!")
+    def __init__(self, master):
+        self.master = master
+        master.title("A simple GUI")
 
+        self.label = Label(master, text="This is our first GUI!")
+        self.label.pack()
+
+        self.greet_button = Button(master, text="Greet", command=self.greet)
+        self.greet_button.pack()
+
+        self.close_button = Button(master, text="Close", command=master.quit)
+        self.close_button.pack()
+
+    def greet(self):
+        print("Greetings!")
 root = Tk()
 app = App(root)
 root.mainloop()
