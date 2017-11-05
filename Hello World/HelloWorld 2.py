@@ -11,11 +11,10 @@ def screen():
     pygame.draw.rect(screen, (250, 250, 250), (0, 0, 500, 500))
 
 def drawplayer():
-
-
-#pygame.display.set_caption('Hello World!')
+    pygame.display.set_caption('Hello World!')
 while True: # main game loop
-
+    drawplayer()
+    drawscreen()
 
     for event in pygame.event.get():
         if event.type == QUIT:
