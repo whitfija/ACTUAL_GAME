@@ -12,8 +12,8 @@ class Player(pygame.sprite.Sprite):
         super().__init__()
         self.image = pygame.image.load("Enemy.png").convert()
         self.image.set_colorkey(WHITE)
-        self.rect = self.image.get_rect()
-    #def __init__(self):
+        pygame.transform.scale2x()
+        #def __init__(self):
         #pygame.sprite.Sprite.__init__(self)
         #self.image = pygame.Surface([30,30])
         #self.image.fill([255,0,0])
