@@ -3,7 +3,9 @@ from pygame.locals import *
 import time
 from sys import exit
 from tkinter import Tk, Label, Button
+import matplotlib.pyplot as plt
 
+pygame.init()
 
 
 #colors
@@ -11,7 +13,7 @@ BLACK = (0,   0,   0)
 WHITE = (255, 255, 255)
 RED = (255,   0,   0)
 hit = False
-coeff = 0
+coeff = 1
 bg = pygame.image.load("images/grid.png")
 
 #gamestate
@@ -45,7 +47,23 @@ class App1:
     def __init__(self, master):
         def funcTo(num):
             App1.func = num
-            print(App1.func)
+            if App1.func== 2:
+                a = []
+                b = []
+                # y=0
+                # x=-50
+
+                for x in range(-50, 50, 1):
+                    y = x ** 2 + 2 * x + 2
+                    a.append(x)
+                    b.append(y)
+                    # x= x+1
+
+                fig = plt.figure()
+                axes = fig.add_subplot(111)
+                axes.plot(a, b)
+                plt.show()
+
             master.quit
             root.withdraw()
 
@@ -53,7 +71,7 @@ class App1:
         master.title("A simple GUI")
         self.label = Label(master, text="Choose")
         self.label.pack()
-        self.greet_button = Button(master, text="level one", command=lambda: funcTo(1))
+        self.greet_button = Button(master, text="SQRT", command=lambda: funcTo(1))
         self.greet_button.pack()
         self.greet_button = Button(master, text="level two", command=lambda: funcTo(2))
         self.greet_button.pack()
