@@ -143,11 +143,11 @@ class SelectEquation:
         master.title("A simple GUI")
         self.label = Label(master, text="STEP 2")
         self.label.pack()
-        self.greet_button = Button(master, text="line", command= lambda: funcTo(1))
+        self.greet_button = Button(master, text="Line", command= lambda: funcTo(1))
         self.greet_button.pack()
         self.greet_button = Button(master, text="Parabola", command= lambda: funcTo(2))
         self.greet_button.pack()
-        self.greet_button = Button(master, text="Exponential", command= lambda: funcTo(3))
+        self.greet_button = Button(master, text="Sine", command= lambda: funcTo(3))
         self.greet_button.pack()
         self.close_button = Button(master, text="OK", command=master.quit)
         self.close_button.pack()
@@ -335,7 +335,7 @@ def line(ball, enemy, coeff):
         ltime = pygame.time.get_ticks()
         print(ltime)
         print(stime)
-        if ltime-stime < 5500:
+        if ltime-stime < 8000:
             ball.rect.x += 1
             ball.rect.y += (int)((0-coeff)*ball.rect.x)
         else:
@@ -371,7 +371,7 @@ def parabola(ball, enemy, coeff):
         ltime = pygame.time.get_ticks()
         print(ltime)
         print(stime)
-        if ltime-stime < 5500:
+        if ltime-stime < 8000:
             ball.rect.x += 1
             ball.rect.y += -coeff*(ball.rect.x**2)
         else:
@@ -407,9 +407,9 @@ def sine(ball, enemy, coeff):
         ltime = pygame.time.get_ticks()
         print(ltime)
         print(stime)
-        if ltime-stime < 5500:
+        if ltime-stime < 8000:
             ball.rect.x += 1
-            ball.rect.y += -coeff*(ball.rect.x**2)
+            ball.rect.y += math.sin(coeff)
         else:
             ball.rect.x = ball.rect.x
             ball.rect.y = ball.rect.y
