@@ -11,6 +11,14 @@ def funcTo2():
 def funcTo3():
     func = 3
 class App:
+<<<<<<< HEAD
+=======
+
+if func == 1
+    x ** 1/2
+
+
+>>>>>>> 1a0be297e93d760b07b87c9b6444cdfd0949f9f2
     def __init__(self, master):
         self.master = master
         master.title("A simple GUI")
