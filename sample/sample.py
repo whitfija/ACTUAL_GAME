@@ -2,15 +2,20 @@ import pygame, sys, easygui, math
 from pygame.locals import *
 import time
 from sys import exit
+from tkinter import Tk, Label, Button
+
+
 
 #colors
 BLACK = (0,   0,   0)
 WHITE = (255, 255, 255)
 RED = (255,   0,   0)
 hit = False
-coeff = 1
+coeff = 0
 bg = pygame.image.load("images/grid.png")
 
+#gamestate
+gamestate = 0
 #Player class
 class Player(pygame.sprite.Sprite):
     def __init__(self, color, width, height):
@@ -32,6 +37,68 @@ class Player(pygame.sprite.Sprite):
     #def move_player(self):
         #key = pygame.key.get_pressed()
         #if key[pygame.K_DOWN]:
+
+
+class App1:
+    func = 0
+
+    def __init__(self, master):
+        def funcTo(num):
+            App1.func = num
+            print(App1.func)
+            master.quit
+            root.withdraw()
+
+        self.master = master
+        master.title("A simple GUI")
+        self.label = Label(master, text="Choose")
+        self.label.pack()
+        self.greet_button = Button(master, text="level one", command=lambda: funcTo(1))
+        self.greet_button.pack()
+        self.greet_button = Button(master, text="level two", command=lambda: funcTo(2))
+        self.greet_button.pack()
+
+
+class App2:
+    func = 0
+
+    def __init__(self, master):
+        def funcTo(num):
+            App2.func = num
+            print(App2.func)
+            master.quit
+            root.withdraw()
+        self.master = master
+        master.title("A simple GUI")
+        self.label = Label(master, text="Choose")
+        self.label.pack()
+        self.greet_button = Button(master, text="line", command= lambda: funcTo(1))
+        self.greet_button.pack()
+        self.greet_button = Button(master, text="Parabola", command= lambda: funcTo(2))
+        self.greet_button.pack()
+        self.greet_button = Button(master, text="Exponential", command= lambda: funcTo(3))
+        self.greet_button.pack()
+        self.close_button = Button(master, text="OK", command=master.quit)
+        self.close_button.pack()
+
+class App3:
+    func = 0
+
+    def __init__(self, master):
+        def funcTo(num):
+            App3.func = num
+            print(App3.func)
+            master.quit
+            root.withdraw()
+
+        self.master = master
+        master.title("A simple GUI")
+        self.label = Label(master, text="Do you want to leave the game?")
+        self.label.pack()
+        self.greet_button = Button(master, text="Play Again!", command=lambda: funcTo(1))
+        self.greet_button.pack()
+        self.greet_button = Button(master, text="Quit", command=lambda: funcTo(2))
+        self.greet_button.pack()
 
 # Enemy class
 class Enemy(pygame.sprite.Sprite):
@@ -148,21 +215,58 @@ for i in range(50):
                 go = False
                 return True
 
+started1 = False
+started2 = False
+started3 = False
+leave = False
+#Main
 
-while True:
+while leave == False:
+    if gamestate == 0:
+        gamestate = 0
     while hit == False: # main game loop
         screen.fill(WHITE)
         screen.blit(bg, (0,0))
         pygame.draw.rect (screen, (0, 0, 0), (0, 768-45, 1024, 45))
+
+        #if started1 == False:
+            #root = Tk()
+            #app = App1(root)
+            #root.mainloop()
+            #started1 = True
+        #root.withdraw()
+
+        #if started2 == False:
+            #root = Tk()
+            #app = App2(root)
+            #root.mainloop()
+            #started2 = True
+        #root.withdraw()
+
+        #if App1.func == 1:
         hit = line(ball, enemy, coeff)
+        #elif App1.func == 2:
+        #    hit = line(ball, enemy, coeff)
+        #else: continue
+
         if hit:
             showFire()
+            root = Tk()
+            app = App3(root)
+            root.mainloop()
+            started3 = True
+            root.withdraw()
 
-        for event in pygame.event.get():
-            if event.type == QUIT:
-                pygame.quit()
-                sys.exit()
+    if App3.func == 1:
+        leave = False
+    elif App3.func == 2:
+        leave = True
+    else: continue
+
+    for event in pygame.event.get():
+        if event.type == QUIT:
+            pygame.quit()
+            sys.exit()
         pygame.display.update()
-
 
 
